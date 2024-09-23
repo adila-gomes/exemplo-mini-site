@@ -1,0 +1,367 @@
+/* Regras CSS para o site inteiro */
+
+/*Regra para TUDO: é usado o "*" 
+    Alterando o comportamento do Box Model visando evitar o problema de tamanho/espaçamento PARA TODOS OS ELEMENTOS da página (por isso, usamos o *)*/
+*{ box-sizing: border-box;} 
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #FF3CAC;
+    background-color: #747ea9;
+    background-color: #5e656c;
+    background-image: linear-gradient(43deg, #aabac9 0%, #d0bbe7 46%, #c6d5e4 100%);
+    background-attachment: fixed;
+}
+
+/* Imagens responsivas */
+img { max-width: 100%; }
+
+/* Regra com seletor CLASSE
+Ao usar classes, podemos escolher livremente
+onde aplicá-las, ou seja, em quais tags a classe
+será aplicada. */
+.container {
+    background-color: rgba(255, 255, 255, 0.849);
+
+    /* Bloco CENTRALIZADO */
+    width: 70%;
+    margin: auto;
+
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: purple 10px 10px 30px 10px;
+}
+
+/* EXERCÍCIOOOOO 🤘 */
+.listas {
+    background: linear-gradient(darkblue, transparent, lightblue);
+    padding: 1%;
+    width: 60%;
+    margin: auto;
+    border-top: solid 4px black;
+    border-bottom: solid 4px black;
+    box-shadow: rgba(0, 0, 0, 0.471) 0 0 30px;
+}
+
+
+/* Seletor tipo TAG */
+p {
+    font-size: 18px;
+    
+    /* Usando valor fixo/absoluto em px */
+    line-height: 32px;
+
+    /* Usando valor relativo/proporcional */
+    line-height: 1.5; /* sem px/medida */
+
+    /* Obs: ao usar uma propriedade duas
+    vezes na mesma regra, sempre irá
+    prevalecer o valor da última (efeito cascata). No entanto, evite esta situação de repetir propriedades na mesma regra. */
+}
+
+
+/* Seletor Classe */
+.centralizar { 
+    text-align: center; }
+
+.destaque {
+    background-color: rgba(105, 55, 105, 0.418);
+    padding: 3px;
+    border: solid 1px purple;
+    border-radius: 4px;
+}
+
+figure {
+    text-align: center;
+    max-width: 419px;
+    
+    /* Versão abreviada */
+    /* margin: 0 auto; */
+
+    /* Versão detalhada */
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Tornando o figure a
+    referência para o posicionamento
+    do figcaption. */
+    position: relative;
+    
+    /* scale(valores de zero até 1) */
+    transform: scale(0.95) rotate(360deg) translateY(4px);
+    filter: grayscale();
+    transition: 1s;
+}
+
+figcaption {
+    font-weight: bold; /* para tornar o texto mais espesso e destacado em comparação com o texto normal */
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    
+    /* Tornando o elemento absoluto.
+    Agora ele está "solto", podendo ser
+    colocado em qualquer coordenada. */
+    position: absolute;
+
+    /* Propriedades de coordenada:
+    top, bottom, left e right */
+    
+    /* Para "forçar" o tamanho total */
+    
+    /* Opção 1: use left/right */
+    right: 0;
+    left: 0;
+
+    /* Opção 2: largura de 100% */
+    width: 100%;
+
+    bottom: 20px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/* Seletor DESCENDENTE */
+figure img { border: solid 1px; }
+
+/* Seletor PSEUDO-CLASSE - começa com :
+:hover -> passar o mouse */
+figure:hover {
+    filter: none;
+    transform: scale(1);
+}
+
+
+/* Seletor DESCENDENTE */
+ol li {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+ul li { /* item da lista não-ordenada */
+    list-style-type: disc;
+}
+
+ul li a { /* link da lista não-ordenada */
+    color: white;
+    text-decoration: none;
+    text-shadow: black 1px 1px 4px;
+}
+
+/* Pseudo-elemento ::marker
+(usado apenas para fins visuais/estéticos) */
+ul li::marker {
+    content: "👻 ";
+    font-size: 16px;   
+}
+
+
+/* Pseudo-classe */
+ul li:first-child { /* primeiro "filho" */
+    background-color: black;
+}
+
+ul li:last-child { /* último "filho" */
+    background-color: red;
+}
+
+ul li:nth-child(4) { /* enésimo "filho" */
+    background-color: orange;
+}
+
+
+details {
+    background-color: white;
+    padding: 10px;
+    border: solid 10px red;
+    text-align: center;
+}
+
+summary { font-weight: bold; }
+
+summary::marker { 
+    content: "🤔 ";
+    font-size: 20px;
+}
+
+details[open] summary::marker {
+    content: "💡";
+}
+
+/* Regras para o menu de links */
+nav { 
+    text-align: center; 
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+    background-color: rgb(99, 42, 99);
+    color: wheat;
+
+    /* Usamos o inline-block
+    para permitir definição de tamanho
+    e ao mesmo manter os elementos lado a lado. */
+    display: inline-block;
+    width: 33.33%;
+    padding: 10px;
+    transition: 0.5s;
+    /* Modificando o Box Model */    
+    /*box-sizing: border-box; */    
+}
+
+/*Grupo de seletores (veja o uso da vírgula)
+Uso das pseudo-classes 
+focus é usado para acessibilidade do usuário sem mouse*/
+nav a:hover, nav a:focus {
+    background-color: black;
+    transform: translateY(10px);
+}
+
+.flutuar-imagem { 
+    float: left;
+    margin-right: 12px;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: darkslateblue;
+}
+
+hr {
+        border: 0;
+        height: 2px;
+        background: black; 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.795); 
+}
+
+.link {
+    text-align: center;
+    border: solid 1px purple;
+    background-color: whitesmoke;
+}
+
+/* .clip-path { 
+    clip-path: ellipse(85% 75% at 55% 85%);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 8%, 100% 70%, 91% 100%, 9% 100%, 0% 70%, 0 10%);
+} */
+
+
+
+/* Regra de animação*/ 
+@keyframes cores {
+    /*Dê*/
+    from {
+        /*color: rgb(11, 150, 103);*/
+        transform: translateY(-100px);
+        opacity: 0;
+    } 
+    
+    /*Para*/
+    to{
+        text-shadow: rgb(226, 98, 119) 0 0 10px;
+        /*color: purple;
+        transform: scale(1.2);*/
+        /*transform: rotate(360deg);*/
+    } 
+}
+
+/*Classe para aplicar animação*/
+.animacao-cores{
+    animation-name: cores; /* Nome da animação (obrigatório) */
+    animation-duration: 1s; /* Duração da animação - segundos ou milissegundos - (obrigatório)*/
+    animation-iteration-count: infinite; /* Quantidade de repetições */
+    animation-direction: alternate; /* definir a direção em que uma animação é reproduzida */
+    will-change: transform; /*Sinaliza ao navegador o que precisa ser priorizado*/
+    animation-timing-function: cubic-bezier(1, 0, 0, 1); /* Função de aceleração/desaceleração */
+    animation-delay: 5s; /* Atraso (espera para começae a animação) */
+
+    /* Forma abreviada
+    -animation: cores 1s cubic-bezier(1, 0, 0, 1) 5s infinite alternate fill-mode; */  
+}
+
+@keyframes animaSubtitulos {
+    0% { color: rgb(197, 102, 235);}
+
+    50% { color: rgb(87, 155, 245); 
+          transform: translateY(250px);
+          opacity: 0.5;}
+
+    75% { transform: translateX(10px) scale(2);}
+
+    100% { transform: scale(1); /* altera o tamanho de um elemento em relação ao seu tamanho original, sem alterar o layout do documento */
+           color: rgb(226, 98, 119);
+        text-shadow: black 0 0 10px;
+    }
+}
+
+.subtitulo-animado {
+    animation-name: animaSubtitulos;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+.bloco  {
+    text-align: center;
+    background-color: white;
+    border: solid 2px;
+    margin: auto; /* Se você define margin: auto; para um elemento com uma largura fixa, o navegador distribui automaticamente o espaço restante igualmente à esquerda e à direita do elemento, resultando em centralização horizontal */
+    width: 70%;
+    position: relative;
+    overflow: hidden; /* controla o que acontece com o conteúdo que excede o contêiner do elemento, qualquer conteúdo que ultrapasse as bordas do elemento é ocultado, não exibindo barras de rolagem nem mostrando o conteúdo que está fora do contêiner */
+}
+
+.bloco p {
+    animation-name: animaTexto;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+    font-weight: bold;
+    background-color: rgba(202, 166, 231, 0.8);
+    color: rgb(226, 219, 219);
+    top: 50%;
+    bottom: 1px;
+    width: 100%; /* define a largura de um elemento. Pode ser especificada em unidades absolutas (como pixels) ou relativas (como porcentagens) */
+    z-index: 1000; /* define a ordem de empilhamento dos elementos posicionados. Um valor maior faz com que o elemento fique na frente dos elementos com valores menores. */
+    position: absolute;
+    will-change: transform; /* é uma propriedade que indica ao navegador quais propriedades de um elemento vão mudar, permitindo que ele otimize o desempenho dessas mudanças */
+}
+
+.bloco img {
+    animation-name: animaImagem; /* nome da animação */
+    animation-duration: 2s; /* duração da animação */
+    animation-iteration-count: infinite; /* a animação continuará a se executar em loop sem parar */
+    animation-direction: alternate; /* cria um efeito de "vai e volta" contínuo */
+    animation-timing-function: linear; /* a animação não acelera nem desacelera, mantendo uma taxa de movimento uniforme do início ao fim. */
+  
+}
+
+@keyframes animaImagem {
+    from {
+        transform: translateX(-400px) rotate(0deg);
+    }
+
+    to {
+        transform: translateX(800px) rotate(360deg);
+    }
+}
+
+@keyframes animaTexto {
+    from {
+        transform: scale(1);
+        background-color: rgba(0, 0, 0, 0.226);
+    }
+
+    to {
+        transform: scale(1.2);
+        background-color: #b888ec;
+    }
+}
